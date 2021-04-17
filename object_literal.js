@@ -35,3 +35,19 @@ function addressMakerComplex(address) {
 }
 
 addressMakerComplex({city: "Jakarta", state: "Java"})
+
+// Adding new function to object literal
+const gmail = {
+    from: "suha@gmail.com",
+    sendMessage: function(msg, to) {
+        console.log(`you send: ${msg} to ${to} from ${this.from}`);
+    }
+}
+
+console.log(gmail);
+gmail.saveMessage = function(addr) {
+    console.log(`email save`, addr);
+}
+
+// Note:
+// - object literal lets you make an object by coding key value directly, no need declaring class

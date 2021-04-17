@@ -34,10 +34,28 @@ function resolveAfter3Second() {
     return new Promise(resolve => {
         setTimeout(() => {
             resolve('Resolved')
-        }, 10000)
+        }, 5000)
     })
 }
 
 resolveAfter3Second().then((data) => {
     console.log(data)
 })
+
+// we can run all promise and wait the result like below
+const firstAsyncAwaitPromise = new Promise((resolver, rejecter) => {
+    resolver("This is first async await with paralel running promises");
+})
+
+const secondAsyncAwaitPromise = new Promise((resolver, rejecter) => {
+    resolver("This is second async await with paralel running promises")
+})
+
+let nilai = (async function doAllJob() {
+    try {
+        await Promise.all(firstAsyncAwaitPromise, secondAsyncAwaitPromise);
+        return "Hello world from inside"
+    } catch (error) {
+        console.log(error.message)
+    }
+})();
